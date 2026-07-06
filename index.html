@@ -1,904 +1,466 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ar" dir="rtl">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Alpha Developers Team | Innovative App Solutions</title>
-  <link rel="icon" href="logo1.png" />
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-  <style>
-    :root {
-      --primary: #2563eb;
-      --secondary: #9333ea;
-      --dark: #1e293b;
-      --light: #f9fafc;
-      --gray: #64748b;
-      --white: #ffffff;
-      --shadow: 0 4px 12px rgba(0,0,0,0.08);
-      --transition: all 0.3s ease;
-    }
-    
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-    
-    body {
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      line-height: 1.6;
-      background-color: var(--light);
-      color: var(--dark);
-      overflow-x: hidden;
-    }
-    
-    .container {
-      width: 100%;
-      max-width: 1200px;
-      margin: 0 auto;
-      padding: 0 20px;
-    }
-    
-    /* Header & Navigation */
-    header {
-      background: linear-gradient(135deg, var(--primary), var(--secondary));
-      color: white;
-      position: relative;
-      overflow: hidden;
-    }
-    
-    .header-content {
-      padding: 100px 0 80px;
-      text-align: center;
-      position: relative;
-      z-index: 1;
-    }
-    
-    .logo-container {
-      margin-bottom: 20px;
-    }
-    
-    .logo {
-      width: 120px;
-      height: 120px;
-      border-radius: 50%;
-      border: 4px solid rgba(255,255,255,0.2);
-      box-shadow: 0 8px 20px rgba(0,0,0,0.15);
-    }
-    
-    h1 {
-      font-size: 3rem;
-      margin-bottom: 15px;
-      font-weight: 700;
-    }
-    
-    .tagline {
-      font-size: 1.3rem;
-      opacity: 0.9;
-      max-width: 700px;
-      margin: 0 auto 30px;
-    }
-    
-    .cta-button {
-      display: inline-block;
-      background: var(--white);
-      color: var(--primary);
-      padding: 12px 30px;
-      border-radius: 50px;
-      font-weight: 600;
-      text-decoration: none;
-      transition: var(--transition);
-      box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-    }
-    
-    .cta-button:hover {
-      transform: translateY(-3px);
-      box-shadow: 0 6px 20px rgba(0,0,0,0.15);
-    }
-    
-    /* Navigation */
-    nav {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      background: rgba(255,255,255,0.95);
-      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-      z-index: 1000;
-      transition: var(--transition);
-    }
-    
-    .nav-container {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 15px 20px;
-    }
-    
-    .nav-logo {
-      font-weight: 700;
-      font-size: 1.5rem;
-      color: var(--primary);
-    }
-    
-    .nav-links {
-      display: flex;
-      list-style: none;
-    }
-    
-    .nav-links li {
-      margin-left: 30px;
-    }
-    
-    .nav-links a {
-      color: var(--dark);
-      text-decoration: none;
-      font-weight: 500;
-      transition: var(--transition);
-    }
-    
-    .nav-links a:hover {
-      color: var(--primary);
-    }
-    
-    .mobile-menu {
-      display: none;
-      font-size: 1.5rem;
-      cursor: pointer;
-    }
-    
-    /* Sections */
-    section {
-      padding: 80px 0;
-    }
-    
-    .section-title {
-      text-align: center;
-      margin-bottom: 50px;
-    }
-    
-    .section-title h2 {
-      font-size: 2.5rem;
-      color: var(--dark);
-      margin-bottom: 15px;
-      position: relative;
-      display: inline-block;
-    }
-    
-    .section-title h2:after {
-      content: '';
-      position: absolute;
-      bottom: -10px;
-      left: 50%;
-      transform: translateX(-50%);
-      width: 60px;
-      height: 4px;
-      background: linear-gradient(to right, var(--primary), var(--secondary));
-      border-radius: 2px;
-    }
-    
-    .section-title p {
-      color: var(--gray);
-      max-width: 700px;
-      margin: 0 auto;
-    }
-    
-    /* About Section */
-    .about-content {
-      display: flex;
-      align-items: center;
-      gap: 50px;
-    }
-    
-    .about-text {
-      flex: 1;
-    }
-    
-    .about-image {
-      flex: 1;
-      border-radius: 12px;
-      overflow: hidden;
-      box-shadow: var(--shadow);
-    }
-    
-    .about-image img {
-      width: 100%;
-      height: auto;
-      display: block;
-      transition: var(--transition);
-    }
-    
-    .about-image:hover img {
-      transform: scale(1.05);
-    }
-    
-    /* Apps Section */
-    .apps-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-      gap: 30px;
-    }
-    
-    .app-card {
-      background: var(--white);
-      border-radius: 12px;
-      overflow: hidden;
-      box-shadow: var(--shadow);
-      transition: var(--transition);
-    }
-    
-    .app-card:hover {
-      transform: translateY(-10px);
-      box-shadow: 0 12px 25px rgba(0,0,0,0.15);
-    }
-    
-    .app-icon {
-      height: 120px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 3rem;
-      background: linear-gradient(135deg, var(--primary), var(--secondary));
-      color: white;
-    }
-    
-    .app-content {
-      padding: 25px;
-    }
-    
-    .app-content h3 {
-      font-size: 1.4rem;
-      margin-bottom: 10px;
-      color: var(--dark);
-    }
-    
-    .app-content p {
-      color: var(--gray);
-      margin-bottom: 20px;
-    }
-    
-    .app-link {
-      display: inline-flex;
-      align-items: center;
-      color: var(--primary);
-      font-weight: 600;
-      text-decoration: none;
-      transition: var(--transition);
-    }
-    
-    .app-link i {
-      margin-left: 5px;
-      transition: var(--transition);
-    }
-    
-    .app-link:hover {
-      color: var(--secondary);
-    }
-    
-    .app-link:hover i {
-      transform: translateX(5px);
-    }
-    
-    /* Team Section */
-    .team-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-      gap: 30px;
-    }
-    
-    .team-member {
-      text-align: center;
-      background: var(--white);
-      border-radius: 12px;
-      padding: 30px 20px;
-      box-shadow: var(--shadow);
-      transition: var(--transition);
-    }
-    
-    .team-member:hover {
-      transform: translateY(-5px);
-    }
-    
-    .member-photo {
-      width: 120px;
-      height: 120px;
-      border-radius: 50%;
-      margin: 0 auto 20px;
-      background: linear-gradient(135deg, var(--primary), var(--secondary));
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: white;
-      font-size: 2.5rem;
-    }
-    
-    .member-name {
-      font-size: 1.3rem;
-      margin-bottom: 5px;
-    }
-    
-    .member-role {
-      color: var(--primary);
-      margin-bottom: 15px;
-      font-weight: 500;
-    }
-    
-    /* Testimonials */
-    .testimonials {
-      background: linear-gradient(135deg, #f0f4ff, #f9f0ff);
-    }
-    
-    .testimonial-slider {
-      max-width: 800px;
-      margin: 0 auto;
-      position: relative;
-    }
-    
-    .testimonial {
-      background: var(--white);
-      padding: 40px;
-      border-radius: 12px;
-      box-shadow: var(--shadow);
-      text-align: center;
-    }
-    
-    .testimonial-text {
-      font-size: 1.1rem;
-      font-style: italic;
-      margin-bottom: 20px;
-      color: var(--dark);
-    }
-    
-    .testimonial-author {
-      font-weight: 600;
-      color: var(--primary);
-    }
-    
-    /* Contact Section */
-    .contact-container {
-      display: flex;
-      gap: 50px;
-    }
-    
-    .contact-info {
-      flex: 1;
-    }
-    
-    .contact-form {
-      flex: 1;
-    }
-    
-    .contact-item {
-      display: flex;
-      align-items: flex-start;
-      margin-bottom: 25px;
-    }
-    
-    .contact-icon {
-      width: 50px;
-      height: 50px;
-      background: linear-gradient(135deg, var(--primary), var(--secondary));
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: white;
-      font-size: 1.2rem;
-      margin-right: 15px;
-      flex-shrink: 0;
-    }
-    
-    .contact-details h3 {
-      margin-bottom: 5px;
-    }
-    
-    .form-group {
-      margin-bottom: 20px;
-    }
-    
-    .form-control {
-      width: 100%;
-      padding: 12px 15px;
-      border: 1px solid #ddd;
-      border-radius: 8px;
-      font-family: inherit;
-      font-size: 1rem;
-      transition: var(--transition);
-    }
-    
-    .form-control:focus {
-      outline: none;
-      border-color: var(--primary);
-      box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
-    }
-    
-    textarea.form-control {
-      min-height: 150px;
-      resize: vertical;
-    }
-    
-    .submit-btn {
-      background: linear-gradient(135deg, var(--primary), var(--secondary));
-      color: white;
-      border: none;
-      padding: 12px 30px;
-      border-radius: 8px;
-      font-weight: 600;
-      cursor: pointer;
-      transition: var(--transition);
-    }
-    
-    .submit-btn:hover {
-      transform: translateY(-3px);
-      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-    }
-    
-    /* Footer */
-    footer {
-      background: var(--dark);
-      color: var(--light);
-      padding: 60px 0 30px;
-    }
-    
-    .footer-content {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: space-between;
-      margin-bottom: 40px;
-    }
-    
-    .footer-column {
-      flex: 1;
-      min-width: 250px;
-      margin-bottom: 30px;
-    }
-    
-    .footer-column h3 {
-      font-size: 1.3rem;
-      margin-bottom: 20px;
-      color: white;
-    }
-    
-    .footer-links {
-      list-style: none;
-    }
-    
-    .footer-links li {
-      margin-bottom: 10px;
-    }
-    
-    .footer-links a {
-      color: #cbd5e1;
-      text-decoration: none;
-      transition: var(--transition);
-    }
-    
-    .footer-links a:hover {
-      color: white;
-    }
-    
-    .social-links {
-      display: flex;
-      gap: 15px;
-      margin-top: 20px;
-    }
-    
-    .social-link {
-      width: 40px;
-      height: 40px;
-      border-radius: 50%;
-      background: rgba(255,255,255,0.1);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: white;
-      text-decoration: none;
-      transition: var(--transition);
-    }
-    
-    .social-link:hover {
-      background: var(--primary);
-      transform: translateY(-3px);
-    }
-    
-    .copyright {
-      text-align: center;
-      padding-top: 30px;
-      border-top: 1px solid rgba(255,255,255,0.1);
-      color: #94a3b8;
-      font-size: 0.9rem;
-    }
-    
-    /* Responsive Design */
-    @media (max-width: 992px) {
-      .about-content {
-        flex-direction: column;
-      }
-      
-      .contact-container {
-        flex-direction: column;
-      }
-    }
-    
-    @media (max-width: 768px) {
-      .nav-links {
-        display: none;
-      }
-      
-      .mobile-menu {
-        display: block;
-      }
-      
-      h1 {
-        font-size: 2.5rem;
-      }
-      
-      .section-title h2 {
-        font-size: 2rem;
-      }
-    }
-    
-    @media (max-width: 576px) {
-      .header-content {
-        padding: 80px 0 60px;
-      }
-      
-      h1 {
-        font-size: 2rem;
-      }
-      
-      .tagline {
-        font-size: 1.1rem;
-      }
-      
-      section {
-        padding: 60px 0;
-      }
-    }
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>سورة يس | الآيات 1-32 - للأطفال</title>
+<link href="https://fonts.googleapis.com/css2?family=Scheherazade+New:wght@400;700&family=Cairo:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+  body {
+    background: linear-gradient(145deg, #f0f4f0 0%, #e2e8da 100%);
+    font-family: 'Scheherazade New', 'Cairo', serif;
+    min-height: 100vh;
+    direction: rtl;
+    padding-bottom: 50px;
+  }
+
+  .container {
+    max-width: 880px;
+    margin: 0 auto;
+    padding: 20px 16px 40px;
+  }
+
+  .surah-header {
+    background: #ffffffcc;
+    backdrop-filter: blur(4px);
+    border-radius: 50px;
+    padding: 18px 20px;
+    margin-bottom: 20px;
+    text-align: center;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.05);
+    border: 1px solid #c8dbc0;
+  }
+
+  .surah-title {
+    font-size: clamp(1.8rem, 6vw, 2.6rem);
+    font-weight: 800;
+    color: #2c6e2c;
+    letter-spacing: -0.3px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    flex-wrap: wrap;
+  }
+  .title-arabic {
+    font-family: 'Scheherazade New', serif;
+  }
+  .title-secondary {
+    font-size: 0.85rem;
+    background: #e2ecd9;
+    padding: 3px 14px;
+    border-radius: 100px;
+    font-family: 'Cairo', sans-serif;
+    color: #2c6e2c;
+  }
+
+  .verse-range {
+    font-family: 'Cairo', sans-serif;
+    font-size: 0.9rem;
+    background: #d9e8d0;
+    display: inline-block;
+    padding: 4px 22px;
+    border-radius: 40px;
+    margin-top: 8px;
+    font-weight: 600;
+    color: #2a5a2a;
+  }
+
+  .surah-note {
+    background: white;
+    border-radius: 60px;
+    padding: 8px 18px;
+    text-align: center;
+    font-size: 0.95rem;
+    font-weight: 500;
+    color: #4a7a2e;
+    margin-bottom: 24px;
+    border-right: 4px solid #5a9e3e;
+    font-family: 'Cairo', sans-serif;
+  }
+
+  .audio-section {
+    background: #ffffff;
+    border-radius: 60px;
+    padding: 10px 20px;
+    margin-bottom: 32px;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    flex-wrap: wrap;
+    justify-content: center;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.04);
+    border: 1px solid #c8dbbc;
+  }
+
+  .play-button {
+    background: #2c6e2c;
+    width: 54px;
+    height: 54px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.2s;
+    box-shadow: 0 6px 12px rgba(44, 110, 44, 0.25);
+    border: none;
+    font-size: 1.6rem;
+    color: white;
+  }
+  .play-button:hover {
+    background: #1e551e;
+    transform: scale(1.02);
+  }
+  .play-button:active {
+    transform: scale(0.96);
+  }
+
+  .audio-status {
+    flex: 1;
+    text-align: center;
+  }
+  .status-text {
+    font-family: 'Cairo', sans-serif;
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: #4a7a2e;
+  }
+  .progress-bar-bg {
+    background: #e0e8d8;
+    height: 5px;
+    border-radius: 8px;
+    margin-top: 6px;
+    width: 100%;
+    overflow: hidden;
+  }
+  .progress-fill {
+    background: #5a9e3e;
+    width: 0%;
+    height: 100%;
+    border-radius: 8px;
+    transition: width 0.2s linear;
+  }
+
+  .verses-list {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+  }
+
+  .verse-item {
+    background: #ffffff;
+    border-radius: 28px;
+    padding: 18px 22px;
+    transition: all 0.2s ease;
+    border: 1px solid #d4e0ca;
+    cursor: pointer;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.02);
+  }
+  .verse-item.active {
+    background: #f6ffed;
+    border-right: 6px solid #5a9e3e;
+    box-shadow: 0 10px 20px -10px rgba(60, 100, 30, 0.12);
+    transform: translateY(-1px);
+  }
+
+  .verse-header {
+    display: flex;
+    align-items: baseline;
+    gap: 14px;
+    margin-bottom: 8px;
+    border-bottom: 1px dashed #d4e0ca;
+    padding-bottom: 6px;
+  }
+  .verse-num {
+    font-family: 'Cairo', monospace;
+    font-weight: 800;
+    background: #eff5e8;
+    width: 40px;
+    height: 40px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 40px;
+    font-size: 1rem;
+    color: #2c6e2c;
+    border: 1px solid #c0d8b0;
+    flex-shrink: 0;
+  }
+  .arabic-text {
+    font-size: clamp(1.3rem, 4.5vw, 1.9rem);
+    font-weight: 700;
+    line-height: 1.6;
+    color: #2c2418;
+    flex: 1;
+    text-align: right;
+    word-break: break-word;
+  }
+
+  .footer-note {
+    text-align: center;
+    margin-top: 34px;
+    font-family: 'Cairo', sans-serif;
+    font-size: 0.75rem;
+    color: #8ba87a;
+    border-top: 1px solid #d4e0ca;
+    padding-top: 20px;
+  }
+
+  @media (max-width: 520px) {
+    .verse-item { padding: 14px 16px; }
+    .verse-num { width: 34px; height: 34px; font-size: 0.85rem; }
+    .audio-section { gap: 12px; }
+  }
+</style>
 </head>
 <body>
-  <!-- Navigation -->
-  <nav>
-    <div class="nav-container container">
-      <div class="nav-logo">Alpha Developers</div>
-      <ul class="nav-links">
-        <li><a href="#home">Home</a></li>
-        <li><a href="#about">About</a></li>
-        <li><a href="#apps">Apps</a></li>
-        <li><a href="#team">Team</a></li>
-        <li><a href="#contact">Contact</a></li>
-      </ul>
-      <div class="mobile-menu">
-        <i class="fas fa-bars"></i>
-      </div>
+<div class="container">
+  <div class="surah-header">
+    <div class="surah-title">
+      <span class="title-arabic">سُورَةُ يس</span>
+      <span class="title-secondary">(قلب القرآن)</span>
     </div>
-  </nav>
+    <div class="verse-range">الآيات ١ – ٣٢</div>
+  </div>
 
-  <!-- Header -->
-  <header id="home">
-    <div class="header-content container">
-      <div class="logo-container">
-        <img src="log2.png" alt="Alpha Developers Team Logo" class="logo">
-      </div>
-      <h1>Alpha Developers Team</h1>
-      <p class="tagline">Creating smart, simple, and innovative apps for students and freelancers.</p>
-      <a href="#apps" class="cta-button">Explore Our Apps</a>
-    </div>
-  </header>
+  <div class="surah-note">
+    ﴿ يسٓ ۝ وَالْقُرْآنِ الْحَكِيمِ ﴾
+  </div>
 
-  <!-- About Section -->
-  <section id="about">
-    <div class="container">
-      <div class="section-title">
-        <h2>About Us</h2>
-        <p>Learn more about our mission, vision, and what drives us to create exceptional apps.</p>
-      </div>
-      <div class="about-content">
-        <div class="about-text">
-          <p>We are a passionate team of developers based in India, dedicated to building educational, productivity, and freelance-focused applications that help people learn, work, and grow.</p>
-          <p>Our mission is to make technology simple, useful, and accessible for everyone. We believe that well-designed software can transform how people approach learning and work, making complex tasks simpler and more efficient.</p>
-          <p>Since our founding, we've focused on creating apps that solve real problems for students and freelancers. Our team combines technical expertise with user-centered design to deliver solutions that are both powerful and easy to use.</p>
-          <p>We're committed to continuous improvement, regularly updating our apps based on user feedback and the latest technological advancements.</p>
-        </div>
-        <div class="about-image">
-          <!-- Placeholder for team image -->
-          <div style="width:100%; height:300px; background:linear-gradient(135deg, #2563eb, #9333ea); display:flex; align-items:center; justify-content:center; color:white; font-size:1.2rem;">
-            Team Collaboration Image
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Apps Section -->
-  <section id="apps">
-    <div class="container">
-      <div class="section-title">
-        <h2>Our Applications</h2>
-        <p>Discover our portfolio of innovative apps designed to enhance learning and productivity.</p>
-      </div>
-      <div class="apps-grid">
-        <div class="app-card">
-          <div class="app-icon">
-            <i class="fas fa-graduation-cap"></i>
-          </div>
-          <div class="app-content">
-            <h3>PSC Training</h3>
-            <p>A comprehensive learning app for Kerala PSC aspirants with mock tests, quizzes, detailed explanations, and progress tracking.</p>
-            <a href="#" class="app-link">View on Google Play <i class="fas fa-arrow-right"></i></a>
-          </div>
-        </div>
-        
-        <div class="app-card">
-          <div class="app-icon">
-            <i class="fas fa-book"></i>
-          </div>
-          <div class="app-content">
-            <h3>Smart Dictionary</h3>
-            <p>A fast, offline dictionary app designed to improve your English and Malayalam vocabulary with pronunciation guides and word games.</p>
-            <a href="#" class="app-link">View on Google Play <i class="fas fa-arrow-right"></i></a>
-          </div>
-        </div>
-        
-        <div class="app-card">
-          <div class="app-icon">
-            <i class="fas fa-tools"></i>
-          </div>
-          <div class="app-content">
-            <h3>Freelance Tools</h3>
-            <p>Utility apps that simplify freelancing tasks like invoice generation, project tracking, time management, and payment reminders.</p>
-            <a href="#" class="app-link">View on Google Play <i class="fas fa-arrow-right"></i></a>
-          </div>
-        </div>
-        
-        <div class="app-card">
-          <div class="app-icon">
-            <i class="fas fa-calculator"></i>
-          </div>
-          <div class="app-content">
-            <h3>Math Master</h3>
-            <p>An educational app that makes learning mathematics fun with interactive lessons, practice problems, and step-by-step solutions.</p>
-            <a href="#" class="app-link">Coming Soon</a>
-          </div>
-        </div>
-        
-        <div class="app-card">
-          <div class="app-icon">
-            <i class="fas fa-language"></i>
-          </div>
-          <div class="app-content">
-            <h3>Language Learner</h3>
-            <p>Master new languages with our interactive app featuring vocabulary builders, conversation practice, and cultural insights.</p>
-            <a href="#" class="app-link">Coming Soon</a>
-          </div>
-        </div>
-        
-        <div class="app-card">
-          <div class="app-icon">
-            <i class="fas fa-chart-line"></i>
-          </div>
-          <div class="app-content">
-            <h3>Finance Tracker</h3>
-            <p>Manage your personal finances with ease using our budgeting app with expense tracking, savings goals, and financial insights.</p>
-            <a href="#" class="app-link">Coming Soon</a>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Team Section -->
-<section id="team">
-  <div class="container">
-    <div class="section-title">
-      <h2>Our Team</h2>
-      <p>Meet the talented individuals behind Alpha Developers Team.</p>
-    </div>
-    <div class="team-grid">
-      <div class="team-member">
-        <div class="member-photo">
-          <i class="fas fa-user"></i>
-        </div>
-        <h3 class="member-name">Fathah</h3>
-        <p class="member-role">Team Leader & Lead Developer</p>
-        <p>Leads the team with technical expertise and project vision. Specializes in mobile app development, architecture design, and full-stack development.</p>
-      </div>
-      
-      <div class="team-member">
-        <div class="member-photo">
-          <i class="fas fa-user"></i>
-        </div>
-        <h3 class="member-name">Salman</h3>
-        <p class="member-role">UI/UX Designer & Developer</p>
-        <p>Creates intuitive and beautiful interfaces for our applications while contributing to frontend development and user experience optimization.</p>
-      </div>
+  <div class="audio-section">
+    <button class="play-button" id="playToggleBtn" aria-label="play/pause">▶︎</button>
+    <div class="audio-status">
+      <div class="status-text" id="audioStatusLabel">استمع إلى الآيات</div>
+      <div class="progress-bar-bg"><div class="progress-fill" id="audioProgressFill"></div></div>
     </div>
   </div>
-</section>
-  <!-- Testimonials Section -->
-  <section class="testimonials">
-    <div class="container">
-      <div class="section-title">
-        <h2>What Our Users Say</h2>
-        <p>Feedback from our valued users around the world.</p>
-      </div>
-      <div class="testimonial-slider">
-        <div class="testimonial">
-          <p class="testimonial-text">"PSC Training app helped me prepare for my exams effectively. The mock tests were incredibly similar to the actual exam pattern. Highly recommended for PSC aspirants!"</p>
-          <p class="testimonial-author">- Anjali S., PSC Aspirant</p>
-        </div>
-      </div>
-    </div>
-  </section>
 
-  <!-- Contact Section -->
-  <section id="contact">
-    <div class="container">
-      <div class="section-title">
-        <h2>Get In Touch</h2>
-        <p>Have questions or want to collaborate? We'd love to hear from you.</p>
-      </div>
-      <div class="contact-container">
-        <div class="contact-info">
-          <div class="contact-item">
-            <div class="contact-icon">
-              <i class="fas fa-envelope"></i>
-            </div>
-            <div class="contact-details">
-              <h3>Email Us</h3>
-              <p><a href="mailto:premiumwork054@gmail.com">premiumwork054@gmail.com</a></p>
-            </div>
-          </div>
-          
-          <div class="contact-item">
-            <div class="contact-icon">
-              <i class="fas fa-map-marker-alt"></i>
-            </div>
-            <div class="contact-details">
-              <h3>Our Location</h3>
-              <p>Kerala, India 🇮🇳</p>
-            </div>
-          </div>
-          
-          <div class="contact-item">
-            <div class="contact-icon">
-              <i class="fas fa-clock"></i>
-            </div>
-            <div class="contact-details">
-              <h3>Response Time</h3>
-              <p>We typically reply within 24 hours</p>
-            </div>
-          </div>
-        </div>
-        
-        <div class="contact-form">
-          <form id="contactForm">
-            <div class="form-group">
-              <input type="text" class="form-control" placeholder="Your Name" required>
-            </div>
-            <div class="form-group">
-              <input type="email" class="form-control" placeholder="Your Email" required>
-            </div>
-            <div class="form-group">
-              <input type="text" class="form-control" placeholder="Subject">
-            </div>
-            <div class="form-group">
-              <textarea class="form-control" placeholder="Your Message" required></textarea>
-            </div>
-            <button type="submit" class="submit-btn">Send Message</button>
-          </form>
-        </div>
-      </div>
-    </div>
-  </section>
+  <div class="verses-list" id="versesList"></div>
+  <div class="footer-note">✨ اضغط على أي آية للانتقال إليها · تلاوة واضحة للأطفال · انتقال تلقائي بين الآيات</div>
+</div>
 
-  <!-- Footer -->
-  <footer>
-    <div class="container">
-      <div class="footer-content">
-        <div class="footer-column">
-          <h3>Alpha Developers</h3>
-          <p>Creating innovative apps that make a difference in education and productivity.</p>
-          <div class="social-links">
-            <a href="#" class="social-link"><i class="fab fa-facebook-f"></i></a>
-            <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
-            <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
-            <a href="#" class="social-link"><i class="fab fa-linkedin-in"></i></a>
-          </div>
-        </div>
-        
-        <div class="footer-column">
-          <h3>Our Apps</h3>
-          <ul class="footer-links">
-            <li><a href="#">PSC Training</a></li>
-            <li><a href="#">Smart Dictionary</a></li>
-            <li><a href="#">Freelance Tools</a></li>
-            <li><a href="#">Math Master</a></li>
-          </ul>
-        </div>
-        
-        <div class="footer-column">
-          <h3>Quick Links</h3>
-          <ul class="footer-links">
-            <li><a href="#home">Home</a></li>
-            <li><a href="#about">About Us</a></li>
-            <li><a href="#apps">Our Apps</a></li>
-            <li><a href="#contact">Contact</a></li>
-          </ul>
-        </div>
-        
-        <div class="footer-column">
-          <h3>Legal</h3>
-          <ul class="footer-links">
-            <li><a href="#">Privacy Policy</a></li>
-            <li><a href="#">Terms of Service</a></li>
-            <li><a href="#">Cookie Policy</a></li>
-          </ul>
-        </div>
-      </div>
-      
-      <div class="copyright">
-        <p>&copy; 2025 Alpha Developers Team. All rights reserved.</p>
-      </div>
-    </div>
-  </footer>
+<audio id="quranAudio" preload="metadata"></audio>
 
-  <script>
-    // Simple script for mobile menu toggle and smooth scrolling
-    document.addEventListener('DOMContentLoaded', function() {
-      const mobileMenu = document.querySelector('.mobile-menu');
-      const navLinks = document.querySelector('.nav-links');
-      
-      mobileMenu.addEventListener('click', function() {
-        navLinks.style.display = navLinks.style.display === 'flex' ? 'none' : 'flex';
+<script>
+  // ====================== SURAH YASEEN (36) VERSES 1 – 32 ======================
+  const versesData = [
+    { num: 1, arabic: "يسٓ" },
+    { num: 2, arabic: "وَالْقُرْآنِ الْحَكِيمِ" },
+    { num: 3, arabic: "إِنَّكَ لَمِنَ الْمُرْسَلِينَ" },
+    { num: 4, arabic: "عَلَىٰ صِرَاطٍ مُسْتَقِيمٍ" },
+    { num: 5, arabic: "تَنْزِيلَ الْعَزِيزِ الرَّحِيمِ" },
+    { num: 6, arabic: "لِتُنْذِرَ قَوْمًا مَا أُنْذِرَ آبَاؤُهُمْ فَهُمْ غَافِلُونَ" },
+    { num: 7, arabic: "لَقَدْ حَقَّ الْقَوْلُ عَلَىٰ أَكْثَرِهِمْ فَهُمْ لَا يُؤْمِنُونَ" },
+    { num: 8, arabic: "إِنَّا جَعَلْنَا فِي أَعْنَاقِهِمْ أَغْلَالًا فَهِيَ إِلَى الْأَذْقَانِ فَهُمْ مُقْمَحُونَ" },
+    { num: 9, arabic: "وَجَعَلْنَا مِنْ بَيْنِ أَيْدِيهِمْ سَدًّا وَمِنْ خَلْفِهِمْ سَدًّا فَأَغْشَيْنَاهُمْ فَهُمْ لَا يُبْصِرُونَ" },
+    { num: 10, arabic: "وَسَوَاءٌ عَلَيْهِمْ أَأَنْذَرْتَهُمْ أَمْ لَمْ تُنْذِرْهُمْ لَا يُؤْمِنُونَ" },
+    { num: 11, arabic: "إِنَّمَا تُنْذِرُ مَنِ اتَّبَعَ الذِّكْرَ وَخَشِيَ الرَّحْمَٰنَ بِالْغَيْبِ ۖ فَبَشِّرْهُ بِمَغْفِرَةٍ وَأَجْرٍ كَرِيمٍ" },
+    { num: 12, arabic: "إِنَّا نَحْنُ نُحْيِي الْمَوْتَىٰ وَنَكْتُبُ مَا قَدَّمُوا وَآثَارَهُمْ ۚ وَكُلَّ شَيْءٍ أَحْصَيْنَاهُ فِي إِمَامٍ مُبِينٍ" },
+    { num: 13, arabic: "وَاضْرِبْ لَهُمْ مَثَلًا أَصْحَابَ الْقَرْيَةِ إِذْ جَاءَهَا الْمُرْسَلُونَ" },
+    { num: 14, arabic: "إِذْ أَرْسَلْنَا إِلَيْهِمُ اثْنَيْنِ فَكَذَّبُوهُمَا فَعَزَّزْنَا بِثَالِثٍ فَقَالُوا إِنَّا إِلَيْكُمْ مُرْسَلُونَ" },
+    { num: 15, arabic: "قَالُوا مَا أَنْتُمْ إِلَّا بَشَرٌ مِثْلُنَا وَمَا أَنْزَلَ الرَّحْمَٰنُ مِنْ شَيْءٍ إِنْ أَنْتُمْ إِلَّا تَكْذِبُونَ" },
+    { num: 16, arabic: "قَالُوا رَبُّنَا يَعْلَمُ إِنَّا إِلَيْكُمْ لَمُرْسَلُونَ" },
+    { num: 17, arabic: "وَمَا عَلَيْنَا إِلَّا الْبَلَاغُ الْمُبِينُ" },
+    { num: 18, arabic: "قَالُوا إِنَّا تَطَيَّرْنَا بِكُمْ ۖ لَئِنْ لَمْ تَنْتَهُوا لَنَرْجُمَنَّكُمْ وَلَيَمَسَّنَّكُمْ مِنَّا عَذَابٌ أَلِيمٌ" },
+    { num: 19, arabic: "قَالُوا طَائِرُكُمْ مَعَكُمْ ۚ أَئِنْ ذُكِّرْتُمْ ۚ بَلْ أَنْتُمْ قَوْمٌ مُسْرِفُونَ" },
+    { num: 20, arabic: "وَجَاءَ مِنْ أَقْصَى الْمَدِينَةِ رَجُلٌ يَسْعَىٰ قَالَ يَا قَوْمِ اتَّبِعُوا الْمُرْسَلِينَ" },
+    { num: 21, arabic: "اتَّبِعُوا مَنْ لَا يَسْأَلُكُمْ أَجْرًا وَهُمْ مُهْتَدُونَ" },
+    { num: 22, arabic: "وَمَا لِيَ لَا أَعْبُدُ الَّذِي فَطَرَنِي وَإِلَيْهِ تُرْجَعُونَ" },
+    { num: 23, arabic: "أَأَتَّخِذُ مِنْ دُونِهِ آلِهَةً إِنْ يُرِدْنِ الرَّحْمَٰنُ بِضُرٍّ لَا تُغْنِ عَنِّي شَفَاعَتُهُمْ شَيْئًا وَلَا يُنْقِذُونِ" },
+    { num: 24, arabic: "إِنِّي إِذًا لَفِي ضَلَالٍ مُبِينٍ" },
+    { num: 25, arabic: "إِنِّي آمَنْتُ بِرَبِّكُمْ فَاسْمَعُونِ" },
+    { num: 26, arabic: "قِيلَ ادْخُلِ الْجَنَّةَ ۖ قَالَ يَا لَيْتَ قَوْمِي يَعْلَمُونَ" },
+    { num: 27, arabic: "بِمَا غَفَرَ لِي رَبِّي وَجَعَلَنِي مِنَ الْمُكْرَمِينَ" },
+    { num: 28, arabic: "وَمَا أَنْزَلْنَا عَلَىٰ قَوْمِهِ مِنْ بَعْدِهِ مِنْ جُنْدٍ مِنَ السَّمَاءِ وَمَا كُنَّا مُنْزِلِينَ" },
+    { num: 29, arabic: "إِنْ كَانَتْ إِلَّا صَيْحَةً وَاحِدَةً فَإِذَا هُمْ خَامِدُونَ" },
+    { num: 30, arabic: "يَا حَسْرَةً عَلَى الْعِبَادِ ۚ مَا يَأْتِيهِمْ مِنْ رَسُولٍ إِلَّا كَانُوا بِهِ يَسْتَهْزِئُونَ" },
+    { num: 31, arabic: "أَلَمْ يَرَوْا كَمْ أَهْلَكْنَا قَبْلَهُمْ مِنَ الْقُرُونِ أَنَّهُمْ إِلَيْهِمْ لَا يَرْجِعُونَ" },
+    { num: 32, arabic: "وَإِنْ كُلٌّ لَمَّا جَمِيعٌ لَدَيْنَا مُحْضَرُونَ" }
+  ];
+
+  function getAyahUrl(verseNumber) {
+    const surahCode = "036";
+    const versePadded = String(verseNumber).padStart(3, '0');
+    return `https://everyayah.com/data/Alafasy_128kbps/${surahCode}${versePadded}.mp3`;
+  }
+
+  const versesContainer = document.getElementById('versesList');
+  const audioElem = document.getElementById('quranAudio');
+  const playBtn = document.getElementById('playToggleBtn');
+  const statusLabel = document.getElementById('audioStatusLabel');
+  const progressFillBar = document.getElementById('audioProgressFill');
+
+  let currentIdx = 0;
+  let isPlaying = false;
+  let autoNextTimeout = null;
+
+  function buildVerses() {
+    versesContainer.innerHTML = '';
+    versesData.forEach((verse, idx) => {
+      const card = document.createElement('div');
+      card.className = 'verse-item';
+      card.setAttribute('data-index', idx);
+      card.setAttribute('data-verse', verse.num);
+      card.innerHTML = `
+        <div class="verse-header">
+          <span class="verse-num">${verse.num}</span>
+          <div class="arabic-text">${verse.arabic}</div>
+        </div>
+      `;
+      card.addEventListener('click', (e) => {
+        e.stopPropagation();
+        jumpToVerse(idx);
       });
-      
-      // Smooth scrolling for navigation links
-      document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-        anchor.addEventListener('click', function(e) {
-          e.preventDefault();
-          
-          const targetId = this.getAttribute('href');
-          if(targetId === '#') return;
-          
-          const targetElement = document.querySelector(targetId);
-          if(targetElement) {
-            window.scrollTo({
-              top: targetElement.offsetTop - 80,
-              behavior: 'smooth'
-            });
-            
-            // Close mobile menu if open
-            if(window.innerWidth <= 768) {
-              navLinks.style.display = 'none';
-            }
-          }
-        });
-      });
-      
-      // Navbar background on scroll
-      window.addEventListener('scroll', function() {
-        const nav = document.querySelector('nav');
-        if(window.scrollY > 50) {
-          nav.style.background = 'rgba(255,255,255,0.98)';
-          nav.style.boxShadow = '0 2px 10px rgba(0,0,0,0.1)';
-        } else {
-          nav.style.background = 'rgba(255,255,255,0.95)';
-          nav.style.boxShadow = '0 2px 10px rgba(0,0,0,0.1)';
-        }
-      });
-      
-      // Form submission
-      const contactForm = document.getElementById('contactForm');
-      if(contactForm) {
-        contactForm.addEventListener('submit', function(e) {
-          e.preventDefault();
-          alert('Thank you for your message! We will get back to you soon.');
-          contactForm.reset();
-        });
-      }
+      versesContainer.appendChild(card);
     });
-  </script>
+  }
+
+  function setActiveVerse(index, smoothScroll = true) {
+    const cards = document.querySelectorAll('.verse-item');
+    cards.forEach((card, i) => {
+      if (i === index) card.classList.add('active');
+      else card.classList.remove('active');
+    });
+    const progressPercent = ((index + 1) / versesData.length) * 100;
+    progressFillBar.style.width = `${progressPercent}%`;
+    
+    if (smoothScroll) {
+      const activeCard = document.querySelector(`.verse-item[data-index='${index}']`);
+      if (activeCard) {
+        activeCard.scrollIntoView({ behavior: 'smooth', block: 'center', inline: 'nearest' });
+      }
+    }
+  }
+
+  function clearNextTimeout() {
+    if (autoNextTimeout) { clearTimeout(autoNextTimeout); autoNextTimeout = null; }
+  }
+
+  function updateUIStatus(verseIdx, playing) {
+    const verseNum = versesData[verseIdx].num;
+    if (playing) {
+      statusLabel.innerHTML = `🔊 تلاوة الآية ${verseNum}`;
+    } else {
+      if (audioElem.paused && audioElem.currentTime === 0) {
+        statusLabel.innerHTML = `🎧 اضغط للاستماع — الآية ${verseNum}`;
+      } else if (audioElem.paused && audioElem.currentTime > 0) {
+        statusLabel.innerHTML = `⏸ متوقف عند الآية ${verseNum}`;
+      } else {
+        statusLabel.innerHTML = `📖 يستمع إلى الآية ${verseNum}`;
+      }
+    }
+  }
+
+  function playVerse(index, autoContinue = true) {
+    if (index < 0 || index >= versesData.length) return;
+    clearNextTimeout();
+    audioElem.pause();
+    isPlaying = false;
+    currentIdx = index;
+    const verse = versesData[currentIdx];
+    audioElem.src = getAyahUrl(verse.num);
+    audioElem.load();
+    setActiveVerse(currentIdx, true);
+    updateUIStatus(currentIdx, true);
+    
+    const playPromise = audioElem.play();
+    if (playPromise !== undefined) {
+      playPromise.then(() => {
+        isPlaying = true;
+        playBtn.innerHTML = '⏸︎';
+        updateUIStatus(currentIdx, true);
+        if (autoContinue) {
+          audioElem.onended = () => {
+            if (currentIdx + 1 < versesData.length) {
+              autoNextTimeout = setTimeout(() => playVerse(currentIdx + 1, true), 560);
+            } else {
+              isPlaying = false;
+              playBtn.innerHTML = '▶︎';
+              statusLabel.innerHTML = '✅ تمت تلاوة الآيات (١–٣٢) من سورة يس 🌟';
+              progressFillBar.style.width = '100%';
+              audioElem.onended = null;
+              clearNextTimeout();
+            }
+          };
+        }
+      }).catch(err => {
+        isPlaying = false;
+        playBtn.innerHTML = '▶︎';
+        statusLabel.innerHTML = '⚠️ يرجى التفاعل المباشر';
+        clearNextTimeout();
+      });
+    }
+    audioElem.onpause = () => {
+      if (isPlaying) { isPlaying = false; playBtn.innerHTML = '▶︎'; updateUIStatus(currentIdx, false); clearNextTimeout(); }
+    };
+    audioElem.onplay = () => {
+      if (!isPlaying) { isPlaying = true; playBtn.innerHTML = '⏸︎'; updateUIStatus(currentIdx, true); }
+    };
+    audioElem.onerror = () => {
+      isPlaying = false; playBtn.innerHTML = '▶︎'; statusLabel.innerHTML = '⚠️ خطأ في التحميل';
+      clearNextTimeout();
+    };
+  }
+
+  function jumpToVerse(index) {
+    clearNextTimeout();
+    if (index === currentIdx && isPlaying) {
+      audioElem.pause();
+      playVerse(index, true);
+    } else {
+      playVerse(index, true);
+    }
+  }
+
+  function togglePlayback() {
+    if (!audioElem.src || audioElem.ended) {
+      if (audioElem.ended) currentIdx = 0;
+      clearNextTimeout();
+      playVerse(currentIdx, true);
+      return;
+    }
+    if (isPlaying) {
+      audioElem.pause();
+      isPlaying = false;
+      playBtn.innerHTML = '▶︎';
+      statusLabel.innerHTML = `⏸ توقف عند الآية ${versesData[currentIdx].num}`;
+      clearNextTimeout();
+      audioElem.onended = null;
+    } else {
+      audioElem.play().then(() => {
+        isPlaying = true;
+        playBtn.innerHTML = '⏸︎';
+        updateUIStatus(currentIdx, true);
+        audioElem.onended = () => {
+          if (currentIdx + 1 < versesData.length) {
+            autoNextTimeout = setTimeout(() => playVerse(currentIdx + 1, true), 560);
+          } else {
+            isPlaying = false; playBtn.innerHTML = '▶︎';
+            statusLabel.innerHTML = '✨ أتممت الآيات (يس ١–٣٢) ✨';
+            progressFillBar.style.width = '100%';
+          }
+        };
+      }).catch(() => { statusLabel.innerHTML = '⚠️ يلزم تفاعل'; });
+    }
+  }
+
+  function init() {
+    buildVerses();
+    setActiveVerse(0, false);
+    playBtn.innerHTML = '▶︎';
+    statusLabel.innerHTML = '🎙️ استمع لآيات يس ١–٣٢';
+    progressFillBar.style.width = '0%';
+    currentIdx = 0;
+    playBtn.addEventListener('click', (e) => { e.preventDefault(); togglePlayback(); });
+  }
+  init();
+</script>
 </body>
 </html>
